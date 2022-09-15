@@ -25,7 +25,7 @@ func getHTML(url string) *http.Response {
 }
 
 func link(doc *goquery.Document) {
-	doc.Find(".mw-parser-output")
+	doc.Find(".mw-parser-output").Each()
 }
 
 func main() {
