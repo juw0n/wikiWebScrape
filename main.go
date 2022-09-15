@@ -24,11 +24,14 @@ func getHTML(url string) *http.Response {
 	return resp
 }
 
-func link(doc *goquery.Document) {
-	doc.Find(".mw-parser-output")
+func getLinks(doc *goquery.Document) {
+	doc.Find("div.mw-body-content").Each(func(i int, item *goquery.Selection) {
+		a := item.Find("")
+	})
 }
 
 func main() {
+	// getting the page url
 	url := "https://en.wikipedia.org/wiki/Web_scraping"
 
 	resp := getHTML(url)
@@ -37,5 +40,5 @@ func main() {
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	checkErr(err)
 
-	link(doc)
+	getLinks(doc)
 }
