@@ -20,7 +20,7 @@ func main() {
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	checkErr(err)
 
-	scarpeData(doc)
+	scrapeDate(doc)
 }
 
 func checkErr(err error) {
@@ -40,7 +40,7 @@ func getHTML(url string) *http.Response {
 	return resp
 }
 
-func scarpeData(doc *goquery.Document) {
+func scrapeDate(doc *goquery.Document) {
 	doc.Find("ul.srp-results>li.s-item").Each(func(i int, item *goquery.Selection) {
 		a := item.Find("a.s-item__link")
 
